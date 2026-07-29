@@ -76,7 +76,22 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
         }
 
         return elements[size - 1] ;
-        
+
+    }
+
+    public boolean isEmpty() {
+
+        return size == 0 ;
+    }
+
+    public boolean isFull() {
+
+        return size == capacity ;
+    }
+
+    public int size() {
+
+        return size ;
     }
 
 }
