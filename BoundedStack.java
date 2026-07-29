@@ -12,8 +12,20 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
        - elements.length ต้องเท่ากับ capacity
      */
 
-private TJ[] elements;
-private int size;
-private int capacity;
+    private TJ[] elements;
+    private int size;
+    private int capacity;
+
+    public BoundedStack(int capacity) {
+
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity must be greater than 0") ;
+        }
+
+        this.capacity = capacity ;
+        this.elements = (TJ[]) new Object[capacity] ;
+        this.size = 0 ;
+
+    }
 
 }
