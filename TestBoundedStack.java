@@ -67,7 +67,7 @@ public class TestBoundedStack {
         } catch (IllegalStateException e) {
             exceptionThrown = true;
         }
-        
+
             check(exceptionThrown, "Pop empty stack");
 
         // Test 14
@@ -83,6 +83,45 @@ public class TestBoundedStack {
         // Test 15
         stack.push(100);
             check(stack.peek() == 100, "Push after empty");
+
+        // Test 16
+        stack.push(200);
+        stack.push(300);
+
+        exceptionThrown = false;
+
+        try {
+            stack.push(400);
+        } catch (IllegalStateException e) {
+            exceptionThrown = true;
+        }
+
+            check(exceptionThrown, "Push full stack");
+
+        // Test 17
+        BoundedStack<Integer> stack2 = new BoundedStack<>(1);
+        
+        check(stack2.isEmpty(), "Capacity 1 stack");
+
+        // Test 18
+        stack2.push(99);
+
+        check(stack2.isFull(), "Capacity 1 becomes full");
+
+        // Test 19
+
+        check(stack2.pop() == 99, "Pop only item");
+
+        // Test 20
+        exceptionThrown = false;
+
+        try {
+            new BoundedStack<Integer>(0);
+        } catch (IllegalArgumentException e) {
+            exceptionThrown = true;
+        }
+
+            check(exceptionThrown, "Constructor capacity = 0");
 
     }
 }
