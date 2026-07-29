@@ -38,25 +38,24 @@ public class TestBoundedStack {
             check(stack.peek() == 20, "Peek after second push");
 
         // Test 6
-        check(stack.peek() == 10, "Peek returns top");
+        check(stack.peek() == 20, "Peek returns top");
 
         // Test 7
-        check(stack.pop() == 10, "Pop returns top");
+        check(stack.pop() == 20, "Pop returns top");
 
         // Test 8
-        check(stack.isEmpty(), "Stack empty after pop");
+        check(!stack.isEmpty(), "Stack not empty after pop");
 
         // Test 9
-        check(stack.peek() == 20, "Peek after pop");
+        check(stack.peek() == 10, "Peek after pop");
 
         // Test 10
-        check(stack.size() == 2, "Size after pop");
+        check(stack.size() == 1, "Size after pop");
 
         // Test 11
         check(!stack.isEmpty(), "Stack not empty");
 
         // Test 12
-        stack.pop();
         stack.pop();
             check(stack.isEmpty(), "Empty after removing all");
 
@@ -122,6 +121,11 @@ public class TestBoundedStack {
         }
 
             check(exceptionThrown, "Constructor capacity = 0");
+
+
+    System.out.println();
+    System.out.println("Passed : " + passed);
+    System.out.println("Failed : " + failed);
 
     }
 }
