@@ -37,6 +37,19 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
         assert size >= 0 ;
         assert size <= capacity ;
         assert elements.length == capacity ;
+
+    }
+
+    public void push(TJ item) {
+
+        if (size == capacity) {
+            throw new IllegalStateException("Stack is full") ;
+        }
+
+        elements[size] = item ;
+        size++ ;
+
+        checkRep();
         
     }
 
