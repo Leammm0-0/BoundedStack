@@ -26,6 +26,18 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
         this.elements = (TJ[]) new Object[capacity] ;
         this.size = 0 ;
 
+        checkRep();
+
+    }
+
+    private void checkRep() {
+
+        assert elements != null ;
+        assert capacity > 0 ;
+        assert size >= 0 ;
+        assert size <= capacity ;
+        assert elements.length == capacity ;
+        
     }
 
 }
