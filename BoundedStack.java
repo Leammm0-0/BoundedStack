@@ -53,4 +53,20 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
         
     }
 
+    public TJ pop() {
+        
+        if (size == 0) {
+            throw new IllegalStateException("Stack is empty") ;
+        }
+
+        size-- ;
+        TJ item = elements[size] ;
+        elements[size] = null ;
+
+        checkRep();
+
+        return item ;
+        
+    }
+
 }
