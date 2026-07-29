@@ -37,5 +37,52 @@ public class TestBoundedStack {
         stack.push(20);
             check(stack.peek() == 20, "Peek after second push");
 
+        // Test 6
+        check(stack.peek() == 10, "Peek returns top");
+
+        // Test 7
+        check(stack.pop() == 10, "Pop returns top");
+
+        // Test 8
+        check(stack.isEmpty(), "Stack empty after pop");
+
+        // Test 9
+        check(stack.peek() == 20, "Peek after pop");
+
+        // Test 10
+        check(stack.size() == 2, "Size after pop");
+
+        // Test 11
+        check(!stack.isEmpty(), "Stack not empty");
+
+        // Test 12
+        stack.pop();
+        stack.pop();
+            check(stack.isEmpty(), "Empty after removing all");
+
+        // Test 13
+        boolean exceptionThrown = false;
+        try {
+            stack.pop();
+        } catch (IllegalStateException e) {
+            exceptionThrown = true;
+        }
+        
+            check(exceptionThrown, "Pop empty stack");
+
+        // Test 14
+        exceptionThrown = false;
+        try {
+            stack.peek();
+        } catch (IllegalStateException e) {
+            exceptionThrown = true;
+        }
+
+            check(exceptionThrown, "Peek empty stack");
+
+        // Test 15
+        stack.push(100);
+            check(stack.peek() == 100, "Push after empty");
+
     }
 }
