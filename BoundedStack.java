@@ -66,6 +66,16 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
         checkRep();
 
         return item ;
+
+    }
+
+    public TJ peek() {
+
+        if (size == 0) {
+            throw new IllegalStateException("Stack is empty") ;
+        }
+
+        return elements[size - 1] ;
         
     }
 
