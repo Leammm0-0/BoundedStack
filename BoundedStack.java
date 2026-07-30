@@ -79,6 +79,21 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
 
     }
 
+    public BoundedStack<TJ> copy() {
+
+        BoundedStack<TJ> newStack = new BoundedStack<>(capacity) ;
+
+        for (int i = 0; i < size; i++) {
+            newStack.elements[i] = elements[i] ;
+        }
+
+        newStack.size = size ;
+        newStack.checkRep();
+
+        return newStack ;
+
+    }
+
     public boolean isEmpty() {
 
         return size == 0 ;
