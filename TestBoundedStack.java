@@ -1,17 +1,17 @@
 public class TestBoundedStack {
 
-    private static int passed = 0;
-    private static int failed = 0;
+    private static int pass = 0;
+    private static int fail = 0;
 
     public static void check(boolean condition, String testName) {
 
         if (condition) {
             System.out.println("PASS : " + testName);
-            passed++;
+            pass++;
 
         } else {
             System.out.println("FAIL : " + testName);
-            failed++;
+            fail++;
             
         }
     }
@@ -123,9 +123,9 @@ public class TestBoundedStack {
             check(exceptionThrown, "Constructor capacity = 0");
 
 
-    System.out.println();
-    System.out.println("Passed : " + passed);
-    System.out.println("Failed : " + failed);
+    System.out.println("\n==================================");
+    System.out.printf("Part A: PASS %d / FAIL %d%n", pass, fail);
+    System.out.println("==================================\n");
 
     }
 }
