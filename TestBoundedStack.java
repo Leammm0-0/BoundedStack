@@ -122,9 +122,32 @@ public class TestBoundedStack {
 
             check(exceptionThrown, "Constructor capacity = 0");
 
+        // Test 21
+        BoundedStack<Integer> original = new BoundedStack<>(3);
+        original.push(10);
+        original.push(20);
+
+        BoundedStack<Integer> copied = original.copy();
+
+        check(copied.size() == original.size(), "Copy has same size");
+
+        // Test 22
+        check(copied.peek() == original.peek(), "Copy has same top element");
+
+        // Test 23
+        copied.push(30);
+
+        check(original.size() == 2, "Original unchanged after modifying copy");
+
+        // Test 24
+        BoundedStack<Integer> emptyStack = new BoundedStack<>(3);
+        BoundedStack<Integer> emptyCopy = emptyStack.copy();
+
+        check(emptyCopy.isEmpty(), "Copy of empty stack is empty");
+
 
     System.out.println("\n==================================");
-    System.out.printf("Part A: PASS %d / FAIL %d%n", pass, fail);
+    System.out.printf("Part A : PASS %d / FAIL %d%n", pass, fail);
     System.out.println("==================================\n");
 
     }
