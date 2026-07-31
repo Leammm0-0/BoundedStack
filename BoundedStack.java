@@ -36,6 +36,15 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
 
     }
 
+    /**
+     * ตรวจสอบ Representation Invariant (RI)
+     * สมาชิกของ stack ต้องไม่เป็น null 
+     * capacity ต้องมากกว่า 0
+     * size ต้องอยู่ระหว่าง 0 ถึง capacity
+     * elements.length ต้องเท่ากับ capacity
+     * @throws AssertionError ถ้า RI ไม่เป็นจริง
+     */
+
     private void checkRep() {
 
         assert elements != null ;
