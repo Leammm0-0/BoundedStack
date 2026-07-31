@@ -1,3 +1,9 @@
+    /**
+     * BoundedStack ระบบบันทึกคำค้นหาย้อนหลัง
+     */
+
+    // 6821651221 นาย ทรงกฤษ เหลี่ยมคุณ No.22 801
+
 public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int string double
     
     /**
