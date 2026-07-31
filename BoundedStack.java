@@ -17,8 +17,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     private int capacity;
 
     /**
-     * Constructor
-     * @param capacity ความจุของ stack
+     * สร้าง stack ที่มีความจุสูงสุดเท่ากับ capacity
+     * @param capacity ความจุสูงสุดของ stack
      * @throws IllegalArgumentException ถ้า capacity <= 0
      */
 
@@ -47,8 +47,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Push an item onto the stack
-     * @param item the item to push
+     * เอาข้อมูลใส่เข้าไปใน stack
+     * @param item ข้อมูลที่จะ push เข้าไปใน stack
      * @throws IllegalStateException ถ้า stack เต็ม
      */
 
@@ -66,8 +66,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Pop an item from the stack
-     * @return the item that was popped
+     * เอาข้อมูลออกจาก stack
+     * @return ข้อมูลที่อยู่บนสุดของ stack
      * @throws IllegalStateException ถ้า stack ว่าง
      */
 
@@ -88,8 +88,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Peek at the top item on the stack
-     * @return the item at the top of the stack
+     * ดูข้อมูลที่อยู่บนสุดของ stack แต่ไม่เอาออก
+     * @return ข้อมูลที่อยู่บนสุดของ stack
      * @throws IllegalStateException ถ้า stack ว่าง
      */
     
@@ -104,8 +104,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Create a copy of the stack
-     * @return a new BoundedStack containing the same elements
+     * สร้าง stack ใหม่ที่มีข้อมูลเหมือนกับตัวเดิม
+     * @return stack ใหม่ที่มีข้อมูลเหมือนกับตัวเดิม
      */
     
     public BoundedStack<TJ> copy() {
@@ -124,8 +124,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Check if the stack is empty
-     * @return true if the stack is empty, false otherwise
+     * เช็คว่า stack ว่างมั้ย
+     * @return true ถ้า stack ว่าง, false ถ้าไม่ว่าง
      */
 
     public boolean isEmpty() {
@@ -134,8 +134,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Check if the stack is full
-     * @return true if the stack is full, false otherwise
+     * เช็คว่า stack เต็มมั้ย
+     * @return true ถ้า stack เต็ม, false ถ้าไม่เต็ม
      */
 
     public boolean isFull() {
@@ -144,8 +144,8 @@ public class BoundedStack<TJ> { // เก็บอะไรก็ได้ int s
     }
 
     /**
-     * Get the number of items in the stack
-     * @return the number of items in the stack
+     * เช็คว่าใน stack มีข้อมูลอยู่กี่ตัว
+     * @return จำนวนข้อมูลใน stack
      */
 
     public int size() {
