@@ -18,7 +18,7 @@ public class TestBoundedStack {
 
     public static void main(String[] args) {
 
-        BoundedStack<Integer> stack = new BoundedStack<>(3);
+        BoundedStack<String> stack = new BoundedStack<>(3);
 
         // Test 1 ตรวจว่า stack ที่สร้างขึ้นเป็นช่องว่างมั้ย
         check(stack.isEmpty(), "New stack is empty");
@@ -27,27 +27,27 @@ public class TestBoundedStack {
         check(stack.size() == 0, "Initial size = 0");
 
         // Test 3 ตรวจว่าเมื่อ push 10 เข้าไปแล้ว stack เป็น 1 มั้ย
-        stack.push(10);
+        stack.push("10");
             check(stack.size() == 1, "Push one item");
 
         // Test 4 ตรวจว่าเมื่อ push 10 เข้าไปแล้วตัวบนสุดจะเป็น 10 มั้ย
-        check(stack.peek() == 10, "Peek after one push");
+        check(stack.peek().equals("10"), "Peek after one push");
 
         // Test 5 ตรวจว่าเมื่อ push 20 เข้าไปแล้วตัวบนสุดจะเป็น 20 มั้ย
-        stack.push(20);
-            check(stack.peek() == 20, "Peek after second push");
+        stack.push("20");
+            check(stack.peek().equals("20"), "Peek after second push");
 
         // Test 6 ตรวจว่าเมื่อมีข้อมูล 2 ตัวจากความจุ 3 stack ยังไม่เต็ม
         check(!stack.isFull(), "Stack is not full");
 
         // Test 7 ตรวจว่าเมื่อ pop ออกไปแล้วมันจะ return ตัวบนสุดออกมาจิงๆ
-        check(stack.pop() == 20, "Pop returns top");
+        check(stack.pop().equals("20"), "Pop returns top");
 
         // Test 8 ตรวจว่าเมื่อ pop ออกไปแล้ว stack ไม่ใช่ช่องว่าง
         check(!stack.isEmpty(), "Stack not empty after pop");
 
         // Test 9 ตรวจว่าเมื่อ pop ออกไปแล้วตัวบนสุดจะเป็น 10 มั้ย
-        check(stack.peek() == 10, "Peek after pop");
+        check(stack.peek().equals("10"), "Peek after pop");
 
         // Test 10 ตรวจว่าเมื่อ pop ออกไปแล้ว stack มีขนาดเท่ากับ 1 มั้ย
         check(stack.size() == 1, "Size after pop");
@@ -80,17 +80,17 @@ public class TestBoundedStack {
             check(exceptionThrown, "Peek empty stack");
 
         // Test 15 ตรวจว่าเมื่อ push 100 เข้าไปแล้วตัวบนสุดจะเป็น 100 มั้ย
-        stack.push(100);
-            check(stack.peek() == 100, "Push after empty");
+        stack.push("100");
+            check(stack.peek().equals("100"), "Push after empty");
 
         // Test 16 ตรวจว่าเมื่อ push 3 ตัวเข้าไปแล้ว push 400 เข้ามาอีกจะเกิด exception มั้ย
-        stack.push(200);
-        stack.push(300);
+        stack.push("200");
+        stack.push("300");
 
         exceptionThrown = false;
 
         try {
-            stack.push(400);
+            stack.push("400");
         } catch (IllegalStateException e) {
             exceptionThrown = true;
         }
@@ -98,23 +98,23 @@ public class TestBoundedStack {
             check(exceptionThrown, "Push full stack");
 
         // Test 17 ตรวจว่าเมื่อสร้าง stack ใหม่จะว่างมั้ย
-        BoundedStack<Integer> stack2 = new BoundedStack<>(1);
+        BoundedStack<String> stack2 = new BoundedStack<>(1);
         
         check(stack2.isEmpty(), "Capacity 1 stack");
 
         // Test 18 ตรวจว่าเมื่อ push 99 เข้าไปแล้ว stack จะเต็มมั้ย
-        stack2.push(99);
+        stack2.push("99");
 
         check(stack2.isFull(), "Capacity 1 becomes full");
 
         // Test 19 ตรวจว่าเมื่อ pop ออกไปแล้วจะได้ 99 มั้ย
-        check(stack2.pop() == 99, "Pop only item");
+        check(stack2.pop().equals("99"), "Pop only item");
 
         // Test 20 ตรวจว่าเมื่อสร้าง stack ด้วย capacity = 0 จะเกิด exception มั้ย
         exceptionThrown = false;
 
         try {
-            new BoundedStack<Integer>(0);
+            new BoundedStack<String>(0);
         } catch (IllegalArgumentException e) {
             exceptionThrown = true;
         }
@@ -122,25 +122,25 @@ public class TestBoundedStack {
             check(exceptionThrown, "Constructor capacity = 0");
 
         // Test 21 ตรวจว่าการ copy stack จะได้ stack ใหม่ที่มี element เหมือนกัน
-        BoundedStack<Integer> original = new BoundedStack<>(3);
-        original.push(10);
-        original.push(20);
+        BoundedStack<String> original = new BoundedStack<>(3);
+        original.push("10");
+        original.push("20");
 
-        BoundedStack<Integer> copied = original.copy();
+        BoundedStack<String> copied = original.copy();
 
         check(copied.size() == original.size(), "Copy has same size");
 
         // Test 22 ตรวจว่าการ copy stack จะได้ element บนสุดเหมือนกัน
-        check(copied.peek() == original.peek(), "Copy has same top element");
+        check(copied.peek().equals(original.peek()), "Copy has same top element");
 
         // Test 23 ตรวจว่าการ push ไปยัง stack ที่ copy จะไม่กระทบกับ stack ต้นฉบับ
-        copied.push(30);
+        copied.push("30");
 
         check(original.size() == 2, "Original unchanged after modifying copy");
 
         // Test 24 ตรวจว่าเมื่อ copy stack ที่ว่างแล้ว stack ที่ copy ยังว่าง
-        BoundedStack<Integer> emptyStack = new BoundedStack<>(3);
-        BoundedStack<Integer> emptyCopy = emptyStack.copy();
+        BoundedStack<String> emptyStack = new BoundedStack<>(3);
+        BoundedStack<String> emptyCopy = emptyStack.copy();
 
         check(emptyCopy.isEmpty(), "Copy of empty stack is empty");
 
